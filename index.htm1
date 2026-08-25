@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>فروشگاه عیاشی | کیف و چمدان</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Tahoma, Arial, sans-serif;
+      background: #f7f7f7;
+      color: #222;
+    }
+
+    header {
+      background: #111;
+      color: white;
+      text-align: center;
+      padding: 25px 15px;
+    }
+
+    header h1 {
+      margin: 0 0 8px;
+      font-size: 30px;
+    }
+
+    header p {
+      margin: 0;
+      color: #ddd;
+    }
+
+    .products {
+      max-width: 1100px;
+      margin: 30px auto;
+      padding: 0 15px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .product {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .product img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .product h2 {
+      font-size: 18px;
+      margin: 15px 10px 8px;
+    }
+
+    .product p {
+      color: #666;
+      margin: 0 10px 18px;
+    }
+
+    footer {
+      background: #111;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>فروشگاه عیاشی</h1>
+    <p>انواع کیف، چمدان و محصولات مسافرتی</p>
+  </header>
+
+  <main class="products">
+
+    <div class="product">
+      <img src="images-۱.jpeg" alt="کیف دخترانه">
+      <h2>کیف دخترانه</h2>
+      <p>کیف زیبا و شیک</p>
+    </div>
+
+    <div class="product">
+      <img src="images-۲.jpeg" alt="چمدان مسافرتی">
+      <h2>چمدان مسافرتی</h2>
+      <p>مناسب سفر</p>
+    </div>
+
+    <div class="product">
+      <img src="images-۳.jpeg" alt="چمدان مسافرتی">
+      <h2>چمدان مسافرتی</h2>
+      <p>مناسب سفر</p>
+    </div>
+
+    <div class="product">
+      <img src="images-۴.jpeg" alt="چمدان مسافرتی">
+      <h2>چمدان مسافرتی</h2>
+      <p>مناسب سفر</p>
+    </div>
+
+    <div class="product">
+      <img src="images-۵.jpeg" alt="کیف دخترانه">
+      <h2>کیف دخترانه</h2>
+      <p>مدل جدید</p>
+    </div>
+
+    <div class="product">
+      <img src="images-۶.jpeg" alt="کیف دخترانه">
+      <h2>کیف دخترانه</h2>
+      <p>مدل جدید</p>
+    </div>
+
+    <div class="product">
+      <img src="images.jpeg" alt="کیف دانتل">
+      <h2>کیف دانتل</h2>
+      <p>مدل شیک و زیبا</p>
+    </div>
+
+  </main>
+
+  <footer>
+    فروشگاه عیاشی | کیف و چمدان
+  </footer>
+
+</body>
+</html>
