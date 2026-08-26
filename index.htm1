@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>فروشگاه عیاشی | کیف و چمدان</title>
+
+  <title>فروشگاه عیاشی | کیف، کفش و چمدان</title>
 
   <style>
     * {
@@ -21,11 +22,11 @@
       background: #111;
       color: white;
       text-align: center;
-      padding: 25px 15px;
+      padding: 30px 15px;
     }
 
     header h1 {
-      margin: 0 0 8px;
+      margin: 0 0 10px;
       font-size: 30px;
     }
 
@@ -34,12 +35,41 @@
       color: #ddd;
     }
 
-    .products {
+    .categories {
+      background: white;
+      padding: 20px 10px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .categories a {
+      background: #111;
+      color: white;
+      text-decoration: none;
+      padding: 10px 15px;
+      border-radius: 8px;
+    }
+
+    .category {
       max-width: 1100px;
-      margin: 30px auto;
+      margin: 35px auto;
       padding: 0 15px;
+    }
+
+    .category h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 24px;
+    }
+
+    .products {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 20px;
     }
 
@@ -58,7 +88,7 @@
       display: block;
     }
 
-    .product h2 {
+    .product h3 {
       font-size: 18px;
       margin: 15px 10px 8px;
     }
@@ -72,68 +102,143 @@
       background: #111;
       color: white;
       text-align: center;
-      padding: 20px;
-      margin-top: 30px;
+      padding: 25px;
+      margin-top: 40px;
     }
   </style>
 </head>
 
 <body>
 
-  <header>
-    <h1>فروشگاه عیاشی</h1>
-    <p>انواع کیف، چمدان و محصولات مسافرتی</p>
-  </header>
+<header>
+  <h1>فروشگاه عیاشی</h1>
+  <p>انواع کیف، کفش، چمدان و محصولات مسافرتی</p>
+</header>
 
-  <main class="products">
+<nav class="categories">
+  <a href="#sports">ساک ورزشی</a>
+  <a href="#travel">ساک مسافرتی</a>
+  <a href="#women-bags">کیف زنانه</a>
+  <a href="#school">کوله مدارس</a>
+  <a href="#suitcases">چمدان مسافرتی</a>
+  <a href="#shoes">کفش زنانه</a>
+  <a href="#passport">کیف پاسپورتی</a>
+</nav>
 
-    <div class="product">
-      <img src="images-۱.jpeg" alt="کیف دخترانه">
-      <h2>کیف دخترانه</h2>
-      <p>کیف زیبا و شیک</p>
-    </div>
+<section class="category" id="sports">
+  <h2>ساک ورزشی</h2>
+  <div class="products">
 
-    <div class="product">
-      <img src="images-۲.jpeg" alt="چمدان مسافرتی">
-      <h2>چمدان مسافرتی</h2>
-      <p>مناسب سفر</p>
-    </div>
+    <div class="product"><img src="ساک ورزشی/1.jpg" alt="ساک ورزشی"><h3>ساک ورزشی</h3><p>مدل ۱</p></div>
+    <div class="product"><img src="ساک ورزشی/2.jpg" alt="ساک ورزشی"><h3>ساک ورزشی</h3><p>مدل ۲</p></div>
+    <div class="product"><img src="ساک ورزشی/3.jpg" alt="ساک ورزشی"><h3>ساک ورزشی</h3><p>مدل ۳</p></div>
+    <div class="product"><img src="ساک ورزشی/4.jpg" alt="ساک ورزشی"><h3>ساک ورزشی</h3><p>مدل ۴</p></div>
+    <div class="product"><img src="ساک ورزشی/5.jpg" alt="ساک ورزشی"><h3>ساک ورزشی</h3><p>مدل ۵</p></div>
+    <div class="product"><img src="ساک ورزشی/6.jpg" alt="ساک ورزشی"><h3>ساک ورزشی</h3><p>مدل ۶</p></div>
 
-    <div class="product">
-      <img src="images-۳.jpeg" alt="چمدان مسافرتی">
-      <h2>چمدان مسافرتی</h2>
-      <p>مناسب سفر</p>
-    </div>
+  </div>
+</section>
 
-    <div class="product">
-      <img src="images-۴.jpeg" alt="چمدان مسافرتی">
-      <h2>چمدان مسافرتی</h2>
-      <p>مناسب سفر</p>
-    </div>
+<section class="category" id="travel">
+  <h2>ساک مسافرتی</h2>
+  <div class="products">
 
-    <div class="product">
-      <img src="images-۵.jpeg" alt="کیف دخترانه">
-      <h2>کیف دخترانه</h2>
-      <p>مدل جدید</p>
-    </div>
+    <div class="product"><img src="ساک مسافرتی/7.jpg" alt="ساک مسافرتی"><h3>ساک مسافرتی</h3><p>مدل ۷</p></div>
+    <div class="product"><img src="ساک مسافرتی/8.jpg" alt="ساک مسافرتی"><h3>ساک مسافرتی</h3><p>مدل ۸</p></div>
+    <div class="product"><img src="ساک مسافرتی/9.jpg" alt="ساک مسافرتی"><h3>ساک مسافرتی</h3><p>مدل ۹</p></div>
+    <div class="product"><img src="ساک مسافرتی/10.jpg" alt="ساک مسافرتی"><h3>ساک مسافرتی</h3><p>مدل ۱۰</p></div>
+    <div class="product"><img src="ساک مسافرتی/11.jpg" alt="ساک مسافرتی"><h3>ساک مسافرتی</h3><p>مدل ۱۱</p></div>
 
-    <div class="product">
-      <img src="images-۶.jpeg" alt="کیف دخترانه">
-      <h2>کیف دخترانه</h2>
-      <p>مدل جدید</p>
-    </div>
+  </div>
+</section>
 
-    <div class="product">
-      <img src="images.jpeg" alt="کیف دانتل">
-      <h2>کیف دانتل</h2>
-      <p>مدل شیک و زیبا</p>
-    </div>
+<section class="category" id="women-bags">
+  <h2>کیف زنانه</h2>
+  <div class="products">
 
-  </main>
+    <div class="product"><img src="کیف زنانه/12.webp" alt="کیف زنانه"><h3>کیف زنانه</h3><p>مدل ۱۲</p></div>
+    <div class="product"><img src="کیف زنانه/13.webp" alt="کیف زنانه"><h3>کیف زنانه</h3><p>مدل ۱۳</p></div>
+    <div class="product"><img src="کیف زنانه/14.jpg" alt="کیف زنانه"><h3>کیف زنانه</h3><p>مدل ۱۴</p></div>
+    <div class="product"><img src="کیف زنانه/15.jpg" alt="کیف زنانه"><h3>کیف زنانه</h3><p>مدل ۱۵</p></div>
+    <div class="product"><img src="کیف زنانه/16.jpg" alt="کیف زنانه"><h3>کیف زنانه</h3><p>مدل ۱۶</p></div>
+    <div class="product"><img src="کیف زنانه/17.webp" alt="کیف زنانه"><h3>کیف زنانه</h3><p>مدل ۱۷</p></div>
+    <div class="product"><img src="کیف زنانه/18.jpeg" alt="کیف زنانه"><h3>کیف زنانه</h3><p>مدل ۱۸</p></div>
+    <div class="product"><img src="کیف زنانه/19.jpeg" alt="کیف زنانه"><h3>کیف زنانه</h3><p>مدل ۱۹</p></div>
+    <div class="product"><img src="کیف زنانه/20.jpg" alt="کیف زنانه"><h3>کیف زنانه</h3><p>مدل ۲۰</p></div>
 
-  <footer>
-    فروشگاه عیاشی | کیف و چمدان
-  </footer>
+  </div>
+</section>
+
+<section class="category" id="school">
+  <h2>کوله مدارس</h2>
+  <div class="products">
+
+    <div class="product"><img src="کوله مدارس/21.jpg" alt="کوله مدارس"><h3>کوله مدارس</h3><p>مدل ۲۱</p></div>
+    <div class="product"><img src="کوله مدارس/22.jpg" alt="کوله مدارس"><h3>کوله مدارس</h3><p>مدل ۲۲</p></div>
+    <div class="product"><img src="کوله مدارس/23.jpg" alt="کوله مدارس"><h3>کوله مدارس</h3><p>مدل ۲۳</p></div>
+    <div class="product"><img src="کوله مدارس/24.jpg" alt="کوله مدارس"><h3>کوله مدارس</h3><p>مدل ۲۴</p></div>
+    <div class="product"><img src="کوله مدارس/25.jpg" alt="کوله مدارس"><h3>کوله مدارس</h3><p>مدل ۲۵</p></div>
+    <div class="product"><img src="کوله مدارس/52.jpg" alt="کوله مدارس"><h3>کوله مدارس</h3><p>مدل ۵۲</p></div>
+    <div class="product"><img src="کوله مدارس/53.jpg" alt="کوله مدارس"><h3>کوله مدارس</h3><p>مدل ۵۳</p></div>
+    <div class="product"><img src="کوله مدارس/54.jpg" alt="کوله مدارس"><h3>کوله مدارس</h3><p>مدل ۵۴</p></div>
+    <div class="product"><img src="کوله مدارس/55.jpg" alt="کوله مدارس"><h3>کوله مدارس</h3><p>مدل ۵۵</p></div>
+
+  </div>
+</section>
+
+<section class="category" id="suitcases">
+  <h2>چمدان مسافرتی</h2>
+  <div class="products">
+
+    <div class="product"><img src="چمدان مسافرتی/26.jpeg" alt="چمدان مسافرتی"><h3>چمدان مسافرتی</h3><p>مدل ۲۶</p></div>
+    <div class="product"><img src="چمدان مسافرتی/27.jpeg" alt="چمدان مسافرتی"><h3>چمدان مسافرتی</h3><p>مدل ۲۷</p></div>
+    <div class="product"><img src="چمدان مسافرتی/28.jpg" alt="چمدان مسافرتی"><h3>چمدان مسافرتی</h3><p>مدل ۲۸</p></div>
+    <div class="product"><img src="چمدان مسافرتی/29.jpeg" alt="چمدان مسافرتی"><h3>چمدان مسافرتی</h3><p>مدل ۲۹</p></div>
+
+  </div>
+</section>
+
+<section class="category" id="shoes">
+  <h2>کفش زنانه</h2>
+  <div class="products">
+
+    <div class="product"><img src="کفش زنانه/30.jpg" alt="کفش زنانه"><h3>کفش زنانه</h3><p>مدل ۳۰</p></div>
+    <div class="product"><img src="کفش زنانه/31.jpg" alt="کفش زنانه"><h3>کفش زنانه</h3><p>مدل ۳۱</p></div>
+    <div class="product"><img src="کفش زنانه/32.jpg" alt="کفش زنانه"><h3>کفش زنانه</h3><p>مدل ۳۲</p></div>
+    <div class="product"><img src="کفش زنانه/33.jpg" alt="کفش زنانه"><h3>کفش زنانه</h3><p>مدل ۳۳</p></div>
+    <div class="product"><img src="کفش زنانه/34.jpg" alt="کفش زنانه"><h3>کفش زنانه</h3><p>مدل ۳۴</p></div>
+    <div class="product"><img src="کفش زنانه/35.jpg" alt="کفش زنانه"><h3>کفش زنانه</h3><p>مدل ۳۵</p></div>
+    <div class="product"><img src="کفش زنانه/36.jpg" alt="کفش زنانه"><h3>کفش زنانه</h3><p>مدل ۳۶</p></div>
+    <div class="product"><img src="کفش زنانه/37.jpg" alt="کفش زنانه"><h3>کفش زنانه</h3><p>مدل ۳۷</p></div>
+    <div class="product"><img src="کفش زنانه/38.jpg" alt="کفش زنانه"><h3>کفش زنانه</h3><p>مدل ۳۸</p></div>
+    <div class="product"><img src="کفش زنانه/39.jpg" alt="کفش زنانه"><h3>کفش زنانه</h3><p>مدل ۳۹</p></div>
+
+  </div>
+</section>
+
+<section class="category" id="passport">
+  <h2>کیف پاسپورتی</h2>
+  <div class="products">
+
+    <div class="product"><img src="کیف پاسپورتی/40.jpg" alt="کیف پاسپورتی"><h3>کیف پاسپورتی</h3><p>مدل ۴۰</p></div>
+    <div class="product"><img src="کیف پاسپورتی/41.jpg" alt="کیف پاسپورتی"><h3>کیف پاسپورتی</h3><p>مدل ۴۱</p></div>
+    <div class="product"><img src="کیف پاسپورتی/42.jpg" alt="کیف پاسپورتی"><h3>کیف پاسپورتی</h3><p>مدل ۴۲</p></div>
+    <div class="product"><img src="کیف پاسپورتی/43.jpg" alt="کیف پاسپورتی"><h3>کیف پاسپورتی</h3><p>مدل ۴۳</p></div>
+    <div class="product"><img src="کیف پاسپورتی/44.jpeg" alt="کیف پاسپورتی"><h3>کیف پاسپورتی</h3><p>مدل ۴۴</p></div>
+    <div class="product"><img src="کیف پاسپورتی/45.jpg" alt="کیف پاسپورتی"><h3>کیف پاسپورتی</h3><p>مدل ۴۵</p></div>
+    <div class="product"><img src="کیف پاسپورتی/46.jpeg" alt="کیف پاسپورتی"><h3>کیف پاسپورتی</h3><p>مدل ۴۶</p></div>
+    <div class="product"><img src="کیف پاسپورتی/47.jpg" alt="کیف پاسپورتی"><h3>کیف پاسپورتی</h3><p>مدل ۴۷</p></div>
+    <div class="product"><img src="کیف پاسپورتی/48.jpg" alt="کیف پاسپورتی"><h3>کیف پاسپورتی</h3><p>مدل ۴۸</p></div>
+    <div class="product"><img src="کیف پاسپورتی/49.jpg" alt="کیف پاسپورتی"><h3>کیف پاسپورتی</h3><p>مدل ۴۹</p></div>
+    <div class="product"><img src="کیف پاسپورتی/50.jpg" alt="کیف پاسپورتی"><h3>کیف پاسپورتی</h3><p>مدل ۵۰</p></div>
+    <div class="product"><img src="کیف پاسپورتی/51.jpg" alt="کیف پاسپورتی"><h3>کیف پاسپورتی</h3><p>مدل ۵۱</p></div>
+
+  </div>
+</section>
+
+<footer>
+  فروشگاه عیاشی | کیف، کفش، چمدان و محصولات مسافرتی
+</footer>
 
 </body>
 </html>
