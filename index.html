@@ -4,11 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>فروشگاه عیاشی</title>
+<title>فروشگاه عیاشی | کیف، کفش، ساک و چمدان</title>
 
 <style>
 * {
     box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
@@ -32,6 +36,7 @@ header h1 {
 
 header p {
     margin: 10px 0 0;
+    font-size: 17px;
 }
 
 nav {
@@ -56,6 +61,11 @@ nav a {
     font-weight: bold;
 }
 
+nav a:hover {
+    background: #111;
+    color: white;
+}
+
 .container {
     width: 94%;
     max-width: 1200px;
@@ -64,6 +74,7 @@ nav a {
 
 .category {
     margin-bottom: 45px;
+    scroll-margin-top: 90px;
 }
 
 .category h2 {
@@ -85,6 +96,12 @@ nav a {
     overflow: hidden;
     box-shadow: 0 3px 12px #0002;
     text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.product:hover {
+    transform: translateY(-4px);
 }
 
 .product img {
@@ -99,6 +116,135 @@ nav a {
     padding: 10px;
     margin: 0;
     font-weight: bold;
+}
+
+/* پنجره بزرگ عکس */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.88);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.modal-content {
+    position: relative;
+    width: 100%;
+    max-width: 850px;
+    max-height: 95vh;
+    text-align: center;
+}
+
+.modal-image {
+    max-width: 100%;
+    max-height: 75vh;
+    object-fit: contain;
+    border-radius: 12px;
+    background: white;
+}
+
+.close {
+    position: absolute;
+    top: -15px;
+    left: -10px;
+    width: 45px;
+    height: 45px;
+    border: none;
+    border-radius: 50%;
+    background: white;
+    color: #111;
+    font-size: 30px;
+    cursor: pointer;
+    z-index: 1002;
+}
+
+/* اطلاعات محصول در پنجره */
+.modal-title {
+    color: white;
+    font-size: 18px;
+    margin: 12px 0;
+}
+
+/* دکمه واتساپ */
+.whatsapp-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: #25D366;
+    color: white;
+    text-decoration: none;
+    padding: 13px 22px;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 16px;
+    box-shadow: 0 4px 15px #0006;
+}
+
+.whatsapp-button:hover {
+    background: #1ebe5d;
+}
+
+/* واتساپ شناور */
+.whatsapp-float {
+    position: fixed;
+    left: 18px;
+    bottom: 18px;
+    width: 58px;
+    height: 58px;
+    background: #25D366;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 28px;
+    box-shadow: 0 4px 15px #0005;
+    z-index: 900;
+}
+
+/* بخش تماس */
+.contact {
+    background: white;
+    width: 94%;
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 3px 12px #0002;
+    text-align: center;
+}
+
+.contact h2 {
+    margin-top: 0;
+}
+
+.contact-item {
+    margin: 14px 0;
+    font-size: 17px;
+    line-height: 1.8;
+}
+
+.contact a {
+    color: #111;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.contact .whatsapp-link {
+    color: #159447;
+}
+
+.contact .instagram-link {
+    color: #c13584;
 }
 
 footer {
@@ -123,6 +269,23 @@ footer {
         font-size: 12px;
         padding: 8px 10px;
     }
+
+    header h1 {
+        font-size: 26px;
+    }
+
+    .modal {
+        padding: 10px;
+    }
+
+    .modal-image {
+        max-height: 68vh;
+    }
+
+    .close {
+        top: -5px;
+        left: 0;
+    }
 }
 </style>
 </head>
@@ -146,122 +309,252 @@ footer {
 
 <main class="container">
 
+<!-- ساک ورزشی -->
 <section class="category" id="sports">
 <h2>ساک ورزشی</h2>
 <div class="products">
 
-<div class="product"><img src="ساک%20ورزشی/1.jpg"><p>ساک ورزشی ۱</p></div>
-<div class="product"><img src="ساک%20ورزشی/2.jpg"><p>ساک ورزشی ۲</p></div>
-<div class="product"><img src="ساک%20ورزشی/3.jpg"><p>ساک ورزشی ۳</p></div>
-<div class="product"><img src="ساک%20ورزشی/4.jpg"><p>ساک ورزشی ۴</p></div>
-<div class="product"><img src="ساک%20ورزشی/5.jpg"><p>ساک ورزشی ۵</p></div>
-<div class="product"><img src="ساک%20ورزشی/6.jpg"><p>ساک ورزشی ۶</p></div>
+<div class="product" onclick="openProduct('1.jpg','ساک ورزشی ۱')"><img src="1.jpg"><p>ساک ورزشی ۱</p></div>
+<div class="product" onclick="openProduct('2.jpg','ساک ورزشی ۲')"><img src="2.jpg"><p>ساک ورزشی ۲</p></div>
+<div class="product" onclick="openProduct('3.jpg','ساک ورزشی ۳')"><img src="3.jpg"><p>ساک ورزشی ۳</p></div>
+<div class="product" onclick="openProduct('4.jpg','ساک ورزشی ۴')"><img src="4.jpg"><p>ساک ورزشی ۴</p></div>
+<div class="product" onclick="openProduct('5.jpg','ساک ورزشی ۵')"><img src="5.jpg"><p>ساک ورزشی ۵</p></div>
+<div class="product" onclick="openProduct('6.jpg','ساک ورزشی ۶')"><img src="6.jpg"><p>ساک ورزشی ۶</p></div>
 
 </div>
 </section>
 
+<!-- ساک مسافرتی -->
 <section class="category" id="travel">
 <h2>ساک مسافرتی</h2>
 <div class="products">
 
-<div class="product"><img src="ساک%20مسافرتی/7.jpg"><p>ساک مسافرتی ۱</p></div>
-<div class="product"><img src="ساک%20مسافرتی/8.jpg"><p>ساک مسافرتی ۲</p></div>
-<div class="product"><img src="ساک%20مسافرتی/9.jpg"><p>ساک مسافرتی ۳</p></div>
-<div class="product"><img src="ساک%20مسافرتی/10.jpg"><p>ساک مسافرتی ۴</p></div>
-<div class="product"><img src="ساک%20مسافرتی/11.jpg"><p>ساک مسافرتی ۵</p></div>
+<div class="product" onclick="openProduct('7.jpg','ساک مسافرتی ۱')"><img src="7.jpg"><p>ساک مسافرتی ۱</p></div>
+<div class="product" onclick="openProduct('8.jpg','ساک مسافرتی ۲')"><img src="8.jpg"><p>ساک مسافرتی ۲</p></div>
+<div class="product" onclick="openProduct('9.jpg','ساک مسافرتی ۳')"><img src="9.jpg"><p>ساک مسافرتی ۳</p></div>
+<div class="product" onclick="openProduct('10.jpg','ساک مسافرتی ۴')"><img src="10.jpg"><p>ساک مسافرتی ۴</p></div>
+<div class="product" onclick="openProduct('11.jpg','ساک مسافرتی ۵')"><img src="11.jpg"><p>ساک مسافرتی ۵</p></div>
 
 </div>
 </section>
 
+<!-- کیف زنانه -->
 <section class="category" id="women">
 <h2>کیف زنانه</h2>
 <div class="products">
 
-<div class="product"><img src="کیف%20زنانه/12.webp"><p>کیف زنانه ۱</p></div>
-<div class="product"><img src="کیف%20زنانه/13.webp"><p>کیف زنانه ۲</p></div>
-<div class="product"><img src="کیف%20زنانه/14.jpg"><p>کیف زنانه ۳</p></div>
-<div class="product"><img src="کیف%20زنانه/15.jpg"><p>کیف زنانه ۴</p></div>
-<div class="product"><img src="کیف%20زنانه/16.jpg"><p>کیف زنانه ۵</p></div>
-<div class="product"><img src="کیف%20زنانه/17.webp"><p>کیف زنانه ۶</p></div>
-<div class="product"><img src="کیف%20زنانه/18.jpeg"><p>کیف زنانه ۷</p></div>
-<div class="product"><img src="کیف%20زنانه/19.jpeg"><p>کیف زنانه ۸</p></div>
-<div class="product"><img src="کیف%20زنانه/20.jpg"><p>کیف زنانه ۹</p></div>
+<div class="product" onclick="openProduct('12.webp','کیف زنانه ۱')"><img src="12.webp"><p>کیف زنانه ۱</p></div>
+<div class="product" onclick="openProduct('13.webp','کیف زنانه ۲')"><img src="13.webp"><p>کیف زنانه ۲</p></div>
+<div class="product" onclick="openProduct('14.jpg','کیف زنانه ۳')"><img src="14.jpg"><p>کیف زنانه ۳</p></div>
+<div class="product" onclick="openProduct('15.jpg','کیف زنانه ۴')"><img src="15.jpg"><p>کیف زنانه ۴</p></div>
+<div class="product" onclick="openProduct('16.jpg','کیف زنانه ۵')"><img src="16.jpg"><p>کیف زنانه ۵</p></div>
+<div class="product" onclick="openProduct('17.webp','کیف زنانه ۶')"><img src="17.webp"><p>کیف زنانه ۶</p></div>
+<div class="product" onclick="openProduct('18.jpeg','کیف زنانه ۷')"><img src="18.jpeg"><p>کیف زنانه ۷</p></div>
+<div class="product" onclick="openProduct('19.jpeg','کیف زنانه ۸')"><img src="19.jpeg"><p>کیف زنانه ۸</p></div>
+<div class="product" onclick="openProduct('20.jpg','کیف زنانه ۹')"><img src="20.jpg"><p>کیف زنانه ۹</p></div>
 
 </div>
 </section>
 
+<!-- کوله مدارس -->
 <section class="category" id="school">
 <h2>کوله مدارس</h2>
 <div class="products">
 
-<div class="product"><img src="کوله%20مدارس/21.jpg"><p>کوله مدارس ۱</p></div>
-<div class="product"><img src="کوله%20مدارس/22.jpg"><p>کوله مدارس ۲</p></div>
-<div class="product"><img src="کوله%20مدارس/23.jpg"><p>کوله مدارس ۳</p></div>
-<div class="product"><img src="کوله%20مدارس/24.jpg"><p>کوله مدارس ۴</p></div>
-<div class="product"><img src="کوله%20مدارس/25.jpg"><p>کوله مدارس ۵</p></div>
+<div class="product" onclick="openProduct('21.jpg','کوله مدارس ۱')"><img src="21.jpg"><p>کوله مدارس ۱</p></div>
+<div class="product" onclick="openProduct('22.jpg','کوله مدارس ۲')"><img src="22.jpg"><p>کوله مدارس ۲</p></div>
+<div class="product" onclick="openProduct('23.jpg','کوله مدارس ۳')"><img src="23.jpg"><p>کوله مدارس ۳</p></div>
+<div class="product" onclick="openProduct('24.jpg','کوله مدارس ۴')"><img src="24.jpg"><p>کوله مدارس ۴</p></div>
+<div class="product" onclick="openProduct('25.jpg','کوله مدارس ۵')"><img src="25.jpg"><p>کوله مدارس ۵</p></div>
+<div class="product" onclick="openProduct('52.jpg','کوله مدارس ۶')"><img src="52.jpg"><p>کوله مدارس ۶</p></div>
+<div class="product" onclick="openProduct('53.jpg','کوله مدارس ۷')"><img src="53.jpg"><p>کوله مدارس ۷</p></div>
+<div class="product" onclick="openProduct('54.jpg','کوله مدارس ۸')"><img src="54.jpg"><p>کوله مدارس ۸</p></div>
+<div class="product" onclick="openProduct('55.jpg','کوله مدارس ۹')"><img src="55.jpg"><p>کوله مدارس ۹</p></div>
 
 </div>
 </section>
 
+<!-- چمدان -->
 <section class="category" id="suitcase">
 <h2>چمدان مسافرتی</h2>
 <div class="products">
 
-<div class="product"><img src="چمدان%20مسافرتی/26.jpeg"><p>چمدان ۱</p></div>
-<div class="product"><img src="چمدان%20مسافرتی/27.jpeg"><p>چمدان ۲</p></div>
-<div class="product"><img src="چمدان%20مسافرتی/28.jpg"><p>چمدان ۳</p></div>
-<div class="product"><img src="چمدان%20مسافرتی/29.jpeg"><p>چمدان ۴</p></div>
+<div class="product" onclick="openProduct('26.jpeg','چمدان ۱')"><img src="26.jpeg"><p>چمدان ۱</p></div>
+<div class="product" onclick="openProduct('27.jpeg','چمدان ۲')"><img src="27.jpeg"><p>چمدان ۲</p></div>
+<div class="product" onclick="openProduct('28.jpg','چمدان ۳')"><img src="28.jpg"><p>چمدان ۳</p></div>
+<div class="product" onclick="openProduct('29.jpeg','چمدان ۴')"><img src="29.jpeg"><p>چمدان ۴</p></div>
 
 </div>
 </section>
 
+<!-- کفش زنانه -->
 <section class="category" id="shoes">
 <h2>کفش زنانه</h2>
 <div class="products">
 
-<div class="product"><img src="کفش%20زنانه/30.jpg"><p>کفش زنانه ۱</p></div>
-<div class="product"><img src="کفش%20زنانه/31.jpg"><p>کفش زنانه ۲</p></div>
-<div class="product"><img src="کفش%20زنانه/32.jpg"><p>کفش زنانه ۳</p></div>
-<div class="product"><img src="کفش%20زنانه/33.jpg"><p>کفش زنانه ۴</p></div>
-<div class="product"><img src="کفش%20زنانه/34.jpg"><p>کفش زنانه ۵</p></div>
-<div class="product"><img src="کفش%20زنانه/35.jpg"><p>کفش زنانه ۶</p></div>
-<div class="product"><img src="کفش%20زنانه/36.jpg"><p>کفش زنانه ۷</p></div>
-<div class="product"><img src="کفش%20زنانه/37.jpg"><p>کفش زنانه ۸</p></div>
-<div class="product"><img src="کفش%20زنانه/38.jpg"><p>کفش زنانه ۹</p></div>
-<div class="product"><img src="کفش%20زنانه/39.jpg"><p>کفش زنانه ۱۰</p></div>
+<div class="product" onclick="openProduct('30.jpg','کفش زنانه ۱')"><img src="30.jpg"><p>کفش زنانه ۱</p></div>
+<div class="product" onclick="openProduct('31.jpg','کفش زنانه ۲')"><img src="31.jpg"><p>کفش زنانه ۲</p></div>
+<div class="product" onclick="openProduct('32.jpg','کفش زنانه ۳')"><img src="32.jpg"><p>کفش زنانه ۳</p></div>
+<div class="product" onclick="openProduct('33.jpg','کفش زنانه ۴')"><img src="33.jpg"><p>کفش زنانه ۴</p></div>
+<div class="product" onclick="openProduct('34.jpg','کفش زنانه ۵')"><img src="34.jpg"><p>کفش زنانه ۵</p></div>
+<div class="product" onclick="openProduct('35.jpg','کفش زنانه ۶')"><img src="35.jpg"><p>کفش زنانه ۶</p></div>
+<div class="product" onclick="openProduct('36.jpg','کفش زنانه ۷')"><img src="36.jpg"><p>کفش زنانه ۷</p></div>
+<div class="product" onclick="openProduct('37.jpg','کفش زنانه ۸')"><img src="37.jpg"><p>کفش زنانه ۸</p></div>
+<div class="product" onclick="openProduct('38.jpg','کفش زنانه ۹')"><img src="38.jpg"><p>کفش زنانه ۹</p></div>
+<div class="product" onclick="openProduct('39.jpg','کفش زنانه ۱۰')"><img src="39.jpg"><p>کفش زنانه ۱۰</p></div>
 
 </div>
 </section>
 
+<!-- کیف پاسپورتی -->
 <section class="category" id="passport">
 <h2>کیف پاسپورتی</h2>
 <div class="products">
 
-<div class="product"><img src="کیف%20پاسپورتی/40.jpg"><p>کیف پاسپورتی ۱</p></div>
-<div class="product"><img src="کیف%20پاسپورتی/41.jpg"><p>کیف پاسپورتی ۲</p></div>
-<div class="product"><img src="کیف%20پاسپورتی/42.jpg"><p>کیف پاسپورتی ۳</p></div>
-<div class="product"><img src="کیف%20پاسپورتی/43.jpg"><p>کیف پاسپورتی ۴</p></div>
-<div class="product"><img src="کیف%20پاسپورتی/44.jpeg"><p>کیف پاسپورتی ۵</p></div>
-<div class="product"><img src="کیف%20پاسپورتی/45.jpg"><p>کیف پاسپورتی ۶</p></div>
-<div class="product"><img src="کیف%20پاسپورتی/46.jpeg"><p>کیف پاسپورتی ۷</p></div>
-<div class="product"><img src="کیف%20پاسپورتی/47.jpg"><p>کیف پاسپورتی ۸</p></div>
-<div class="product"><img src="کیف%20پاسپورتی/48.jpg"><p>کیف پاسپورتی ۹</p></div>
-<div class="product"><img src="کیف%20پاسپورتی/49.jpg"><p>کیف پاسپورتی ۱۰</p></div>
-<div class="product"><img src="کیف%20پاسپورتی/50.jpg"><p>کیف پاسپورتی ۱۱</p></div>
-<div class="product"><img src="کیف%20پاسپورتی/51.jpg"><p>کیف پاسپورتی ۱۲</p></div>
+<div class="product" onclick="openProduct('40.jpg','کیف پاسپورتی ۱')"><img src="40.jpg"><p>کیف پاسپورتی ۱</p></div>
+<div class="product" onclick="openProduct('41.jpg','کیف پاسپورتی ۲')"><img src="41.jpg"><p>کیف پاسپورتی ۲</p></div>
+<div class="product" onclick="openProduct('42.jpg','کیف پاسپورتی ۳')"><img src="42.jpg"><p>کیف پاسپورتی ۳</p></div>
+<div class="product" onclick="openProduct('43.jpg','کیف پاسپورتی ۴')"><img src="43.jpg"><p>کیف پاسپورتی ۴</p></div>
+<div class="product" onclick="openProduct('44.jpeg','کیف پاسپورتی ۵')"><img src="44.jpeg"><p>کیف پاسپورتی ۵</p></div>
+<div class="product" onclick="openProduct('45.jpg','کیف پاسپورتی ۶')"><img src="45.jpg"><p>کیف پاسپورتی ۶</p></div>
+<div class="product" onclick="openProduct('46.jpeg','کیف پاسپورتی ۷')"><img src="46.jpeg"><p>کیف پاسپورتی ۷</p></div>
+<div class="product" onclick="openProduct('47.jpg','کیف پاسپورتی ۸')"><img src="47.jpg"><p>کیف پاسپورتی ۸</p></div>
+<div class="product" onclick="openProduct('48.jpg','کیف پاسپورتی ۹')"><img src="48.jpg"><p>کیف پاسپورتی ۹</p></div>
+<div class="product" onclick="openProduct('49.jpg','کیف پاسپورتی ۱۰')"><img src="49.jpg"><p>کیف پاسپورتی ۱۰</p></div>
+<div class="product" onclick="openProduct('50.jpg','کیف پاسپورتی ۱۱')"><img src="50.jpg"><p>کیف پاسپورتی ۱۱</p></div>
+<div class="product" onclick="openProduct('51.jpg','کیف پاسپورتی ۱۲')"><img src="51.jpg"><p>کیف پاسپورتی ۱۲</p></div>
 
 </div>
 </section>
 
 </main>
 
+<!-- اطلاعات تماس -->
+<section class="contact">
+
+<h2>ارتباط با فروشگاه عیاشی</h2>
+
+<div class="contact-item">
+📍 <strong>آدرس:</strong><br>
+اهواز، نادری، خیابان سیروس، بین سعدی و کتانبافت
+</div>
+
+<div class="contact-item">
+📞 <strong>شماره تماس:</strong><br>
+<a href="tel:09385394740">09385394740</a>
+</div>
+
+<div class="contact-item">
+💬 <strong>واتساپ:</strong><br>
+<a class="whatsapp-link"
+href="https://wa.me/989385394740"
+target="_blank">
+09385394740
+</a>
+</div>
+
+<div class="contact-item">
+📷 <strong>اینستاگرام:</strong><br>
+<a class="instagram-link"
+href="https://instagram.com/kifokafsh.ayashi"
+target="_blank">
+@kifokafsh.ayashi
+</a>
+</div>
+
+</section>
+
 <footer>
 <p>فروشگاه عیاشی</p>
 <p>کیف | کفش | ساک | چمدان</p>
+<p>اهواز - نادری - خیابان سیروس</p>
 </footer>
+
+<!-- پنجره نمایش عکس -->
+<div class="modal" id="imageModal" onclick="closeModal(event)">
+
+    <div class="modal-content">
+
+        <button class="close" onclick="closeModal()">×</button>
+
+        <img class="modal-image" id="modalImage" src="" alt="محصول فروشگاه عیاشی">
+
+        <div class="modal-title" id="modalTitle"></div>
+
+        <a
+            id="modalWhatsapp"
+            class="whatsapp-button"
+            href="#"
+            target="_blank">
+            💬 سفارش در واتساپ
+        </a>
+
+    </div>
+
+</div>
+
+<!-- واتساپ شناور -->
+<a
+    class="whatsapp-float"
+    href="https://wa.me/989385394740"
+    target="_blank"
+    aria-label="واتساپ فروشگاه">
+    💬
+</a>
+
+<script>
+
+function openProduct(image, title) {
+
+    const modal = document.getElementById("imageModal");
+    const modalImage = document.getElementById("modalImage");
+    const modalTitle = document.getElementById("modalTitle");
+    const whatsapp = document.getElementById("modalWhatsapp");
+
+    modalImage.src = image;
+    modalTitle.textContent = title;
+
+    const message =
+        "سلام، درباره " + title +
+        " از فروشگاه عیاشی سوال دارم.";
+
+    whatsapp.href =
+        "https://wa.me/989385394740?text=" +
+        encodeURIComponent(message);
+
+    modal.classList.add("show");
+
+    document.body.style.overflow = "hidden";
+}
+
+function closeModal(event) {
+
+    if (
+        !event ||
+        event.target.id === "imageModal" ||
+        event.target.classList.contains("close")
+    ) {
+
+        document.getElementById("imageModal").classList.remove("show");
+
+        document.body.style.overflow = "auto";
+    }
+}
+
+document.addEventListener("keydown", function(event) {
+
+    if (event.key === "Escape") {
+
+        document.getElementById("imageModal").classList.remove("show");
+
+        document.body.style.overflow = "auto";
+    }
+
+});
+
+</script>
 
 </body>
 </html>
-
 
 
