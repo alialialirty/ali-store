@@ -4,288 +4,269 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>فروشگاه عیاشی | کیف، کفش، ساک و چمدان</title>
+<title>فروشگاه عیاشی | کیف و کفش</title>
 
 <style>
-* {
-    box-sizing: border-box;
+*{
+box-sizing:border-box;
 }
 
-html {
-    scroll-behavior: smooth;
+body{
+margin:0;
+font-family:Tahoma,Arial,sans-serif;
+background:#f4f4f4;
+color:#222;
 }
 
-body {
-    margin: 0;
-    font-family: Tahoma, Arial, sans-serif;
-    background: #f5f5f5;
-    color: #222;
+header{
+background:#111;
+color:white;
+text-align:center;
+padding:28px 15px;
 }
 
-header {
-    background: #111;
-    color: white;
-    text-align: center;
-    padding: 30px 15px;
+header h1{
+margin:0;
+font-size:30px;
 }
 
-header h1 {
-    margin: 0;
-    font-size: 32px;
+header p{
+margin:10px 0 0;
+font-size:16px;
 }
 
-header p {
-    margin: 10px 0 0;
-    font-size: 17px;
+nav{
+background:white;
+padding:12px;
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:8px;
+position:sticky;
+top:0;
+z-index:50;
+box-shadow:0 2px 8px #0002;
 }
 
-nav {
-    background: white;
-    padding: 15px;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 8px;
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    box-shadow: 0 2px 8px #0002;
+nav a{
+background:#eeeeee;
+color:#111;
+text-decoration:none;
+padding:9px 13px;
+border-radius:20px;
+font-weight:bold;
+font-size:14px;
 }
 
-nav a {
-    background: #eee;
-    color: #111;
-    text-decoration: none;
-    padding: 10px 14px;
-    border-radius: 20px;
-    font-weight: bold;
+.container{
+width:94%;
+max-width:1200px;
+margin:25px auto;
 }
 
-nav a:hover {
-    background: #111;
-    color: white;
+.category{
+margin-bottom:40px;
+scroll-margin-top:80px;
 }
 
-.container {
-    width: 94%;
-    max-width: 1200px;
-    margin: 25px auto;
+.category h2{
+background:#111;
+color:white;
+padding:13px;
+border-radius:10px;
+font-size:21px;
 }
 
-.category {
-    margin-bottom: 45px;
-    scroll-margin-top: 90px;
+.products{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:16px;
 }
 
-.category h2 {
-    background: #111;
-    color: white;
-    padding: 14px;
-    border-radius: 10px;
+.product{
+background:white;
+border-radius:12px;
+overflow:hidden;
+box-shadow:0 3px 12px #0002;
+text-align:center;
 }
 
-.products {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 18px;
+.product a{
+display:block;
+text-decoration:none;
+color:#222;
 }
 
-.product {
-    background: white;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 3px 12px #0002;
-    text-align: center;
-    cursor: pointer;
-    transition: transform 0.2s;
+.product img{
+width:100%;
+height:230px;
+object-fit:cover;
+display:block;
+background:#eee;
 }
 
-.product:hover {
-    transform: translateY(-4px);
+.product p{
+margin:0;
+padding:11px 5px;
+font-weight:bold;
 }
 
-.product img {
-    width: 100%;
-    height: 230px;
-    object-fit: cover;
-    display: block;
-    background: #eee;
+/* صفحه بزرگ عکس */
+.photo-page{
+display:none;
+position:fixed;
+z-index:999;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.94);
+align-items:center;
+justify-content:center;
+padding:20px;
 }
 
-.product p {
-    padding: 10px;
-    margin: 0;
-    font-weight: bold;
+.photo-page:target{
+display:flex;
 }
 
-/* پنجره بزرگ عکس */
-.modal {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.88);
-    z-index: 1000;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
+.photo-box{
+max-width:900px;
+width:100%;
+text-align:center;
 }
 
-.modal.show {
-    display: flex;
+.photo-box img{
+max-width:100%;
+max-height:72vh;
+object-fit:contain;
+background:white;
+border-radius:12px;
 }
 
-.modal-content {
-    position: relative;
-    width: 100%;
-    max-width: 850px;
-    max-height: 95vh;
-    text-align: center;
+.photo-title{
+color:white;
+font-size:18px;
+font-weight:bold;
+margin:12px 0;
 }
 
-.modal-image {
-    max-width: 100%;
-    max-height: 75vh;
-    object-fit: contain;
-    border-radius: 12px;
-    background: white;
+.close{
+display:inline-block;
+background:white;
+color:#111;
+text-decoration:none;
+padding:10px 20px;
+border-radius:25px;
+font-weight:bold;
+margin:5px;
 }
 
-.close {
-    position: absolute;
-    top: -15px;
-    left: -10px;
-    width: 45px;
-    height: 45px;
-    border: none;
-    border-radius: 50%;
-    background: white;
-    color: #111;
-    font-size: 30px;
-    cursor: pointer;
-    z-index: 1002;
+.whatsapp-product{
+display:inline-block;
+background:#25D366;
+color:white;
+text-decoration:none;
+padding:12px 20px;
+border-radius:25px;
+font-weight:bold;
+margin:5px;
 }
 
-/* اطلاعات محصول در پنجره */
-.modal-title {
-    color: white;
-    font-size: 18px;
-    margin: 12px 0;
+/* اطلاعات تماس */
+.contact{
+background:white;
+width:94%;
+max-width:1000px;
+margin:30px auto;
+padding:25px;
+border-radius:15px;
+box-shadow:0 3px 12px #0002;
+text-align:center;
 }
 
-/* دکمه واتساپ */
-.whatsapp-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    background: #25D366;
-    color: white;
-    text-decoration: none;
-    padding: 13px 22px;
-    border-radius: 30px;
-    font-weight: bold;
-    font-size: 16px;
-    box-shadow: 0 4px 15px #0006;
+.contact h2{
+margin-top:0;
 }
 
-.whatsapp-button:hover {
-    background: #1ebe5d;
+.contact p{
+font-size:16px;
+line-height:2;
+margin:10px 0;
+}
+
+.contact a{
+font-weight:bold;
+text-decoration:none;
+}
+
+.phone{
+color:#111;
+}
+
+.whatsapp{
+color:#159447;
+}
+
+.instagram{
+color:#c13584;
 }
 
 /* واتساپ شناور */
-.whatsapp-float {
-    position: fixed;
-    left: 18px;
-    bottom: 18px;
-    width: 58px;
-    height: 58px;
-    background: #25D366;
-    color: white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    font-size: 28px;
-    box-shadow: 0 4px 15px #0005;
-    z-index: 900;
+.whatsapp-float{
+position:fixed;
+left:18px;
+bottom:18px;
+width:60px;
+height:60px;
+border-radius:50%;
+background:#25D366;
+color:white;
+display:flex;
+align-items:center;
+justify-content:center;
+text-decoration:none;
+font-size:28px;
+z-index:200;
+box-shadow:0 4px 15px #0005;
 }
 
-/* بخش تماس */
-.contact {
-    background: white;
-    width: 94%;
-    max-width: 1000px;
-    margin: 30px auto;
-    padding: 25px;
-    border-radius: 15px;
-    box-shadow: 0 3px 12px #0002;
-    text-align: center;
+footer{
+background:#111;
+color:white;
+text-align:center;
+padding:25px;
+margin-top:40px;
 }
 
-.contact h2 {
-    margin-top: 0;
+@media(max-width:600px){
+
+.products{
+grid-template-columns:repeat(2,1fr);
+gap:10px;
 }
 
-.contact-item {
-    margin: 14px 0;
-    font-size: 17px;
-    line-height: 1.8;
+.product img{
+height:180px;
 }
 
-.contact a {
-    color: #111;
-    font-weight: bold;
-    text-decoration: none;
+nav a{
+font-size:12px;
+padding:8px 10px;
 }
 
-.contact .whatsapp-link {
-    color: #159447;
+header h1{
+font-size:25px;
 }
 
-.contact .instagram-link {
-    color: #c13584;
+.photo-page{
+padding:10px;
 }
 
-footer {
-    background: #111;
-    color: white;
-    text-align: center;
-    padding: 25px;
-    margin-top: 40px;
+.photo-box img{
+max-height:65vh;
 }
 
-@media (max-width: 600px) {
-    .products {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-    }
-
-    .product img {
-        height: 180px;
-    }
-
-    nav a {
-        font-size: 12px;
-        padding: 8px 10px;
-    }
-
-    header h1 {
-        font-size: 26px;
-    }
-
-    .modal {
-        padding: 10px;
-    }
-
-    .modal-image {
-        max-height: 68vh;
-    }
-
-    .close {
-        top: -5px;
-        left: 0;
-    }
 }
 </style>
 </head>
@@ -293,268 +274,296 @@ footer {
 <body>
 
 <header>
-    <h1>فروشگاه عیاشی</h1>
-    <p>کیف، کفش، ساک و چمدان</p>
+<h1>فروشگاه عیاشی</h1>
+<p>کیف، کفش، ساک و چمدان</p>
 </header>
 
 <nav>
-    <a href="#sports">ساک ورزشی</a>
-    <a href="#travel">ساک مسافرتی</a>
-    <a href="#women">کیف زنانه</a>
-    <a href="#school">کوله مدارس</a>
-    <a href="#suitcase">چمدان مسافرتی</a>
-    <a href="#shoes">کفش زنانه</a>
-    <a href="#passport">کیف پاسپورتی</a>
+<a href="#sports">ساک ورزشی</a>
+<a href="#travel">ساک مسافرتی</a>
+<a href="#women">کیف زنانه</a>
+<a href="#school">کوله مدارس</a>
+<a href="#suitcase">چمدان مسافرتی</a>
+<a href="#shoes">کفش زنانه</a>
+<a href="#passport">کیف پاسپورتی</a>
 </nav>
 
 <main class="container">
 
-<!-- ساک ورزشی -->
 <section class="category" id="sports">
 <h2>ساک ورزشی</h2>
 <div class="products">
 
-<div class="product" onclick="openProduct('1.jpg','ساک ورزشی ۱')"><img src="1.jpg"><p>ساک ورزشی ۱</p></div>
-<div class="product" onclick="openProduct('2.jpg','ساک ورزشی ۲')"><img src="2.jpg"><p>ساک ورزشی ۲</p></div>
-<div class="product" onclick="openProduct('3.jpg','ساک ورزشی ۳')"><img src="3.jpg"><p>ساک ورزشی ۳</p></div>
-<div class="product" onclick="openProduct('4.jpg','ساک ورزشی ۴')"><img src="4.jpg"><p>ساک ورزشی ۴</p></div>
-<div class="product" onclick="openProduct('5.jpg','ساک ورزشی ۵')"><img src="5.jpg"><p>ساک ورزشی ۵</p></div>
-<div class="product" onclick="openProduct('6.jpg','ساک ورزشی ۶')"><img src="6.jpg"><p>ساک ورزشی ۶</p></div>
+<div class="product"><a href="#p1"><img src="1.jpg"><p>ساک ورزشی ۱</p></a></div>
+<div class="product"><a href="#p2"><img src="2.jpg"><p>ساک ورزشی ۲</p></a></div>
+<div class="product"><a href="#p3"><img src="3.jpg"><p>ساک ورزشی ۳</p></a></div>
+<div class="product"><a href="#p4"><img src="4.jpg"><p>ساک ورزشی ۴</p></a></div>
+<div class="product"><a href="#p5"><img src="5.jpg"><p>ساک ورزشی ۵</p></a></div>
+<div class="product"><a href="#p6"><img src="6.jpg"><p>ساک ورزشی ۶</p></a></div>
 
 </div>
 </section>
 
-<!-- ساک مسافرتی -->
 <section class="category" id="travel">
 <h2>ساک مسافرتی</h2>
 <div class="products">
 
-<div class="product" onclick="openProduct('7.jpg','ساک مسافرتی ۱')"><img src="7.jpg"><p>ساک مسافرتی ۱</p></div>
-<div class="product" onclick="openProduct('8.jpg','ساک مسافرتی ۲')"><img src="8.jpg"><p>ساک مسافرتی ۲</p></div>
-<div class="product" onclick="openProduct('9.jpg','ساک مسافرتی ۳')"><img src="9.jpg"><p>ساک مسافرتی ۳</p></div>
-<div class="product" onclick="openProduct('10.jpg','ساک مسافرتی ۴')"><img src="10.jpg"><p>ساک مسافرتی ۴</p></div>
-<div class="product" onclick="openProduct('11.jpg','ساک مسافرتی ۵')"><img src="11.jpg"><p>ساک مسافرتی ۵</p></div>
+<div class="product"><a href="#p7"><img src="7.jpg"><p>ساک مسافرتی ۱</p></a></div>
+<div class="product"><a href="#p8"><img src="8.jpg"><p>ساک مسافرتی ۲</p></a></div>
+<div class="product"><a href="#p9"><img src="9.jpg"><p>ساک مسافرتی ۳</p></a></div>
+<div class="product"><a href="#p10"><img src="10.jpg"><p>ساک مسافرتی ۴</p></a></div>
+<div class="product"><a href="#p11"><img src="11.jpg"><p>ساک مسافرتی ۵</p></a></div>
 
 </div>
 </section>
 
-<!-- کیف زنانه -->
 <section class="category" id="women">
 <h2>کیف زنانه</h2>
 <div class="products">
 
-<div class="product" onclick="openProduct('12.webp','کیف زنانه ۱')"><img src="12.webp"><p>کیف زنانه ۱</p></div>
-<div class="product" onclick="openProduct('13.webp','کیف زنانه ۲')"><img src="13.webp"><p>کیف زنانه ۲</p></div>
-<div class="product" onclick="openProduct('14.jpg','کیف زنانه ۳')"><img src="14.jpg"><p>کیف زنانه ۳</p></div>
-<div class="product" onclick="openProduct('15.jpg','کیف زنانه ۴')"><img src="15.jpg"><p>کیف زنانه ۴</p></div>
-<div class="product" onclick="openProduct('16.jpg','کیف زنانه ۵')"><img src="16.jpg"><p>کیف زنانه ۵</p></div>
-<div class="product" onclick="openProduct('17.webp','کیف زنانه ۶')"><img src="17.webp"><p>کیف زنانه ۶</p></div>
-<div class="product" onclick="openProduct('18.jpeg','کیف زنانه ۷')"><img src="18.jpeg"><p>کیف زنانه ۷</p></div>
-<div class="product" onclick="openProduct('19.jpeg','کیف زنانه ۸')"><img src="19.jpeg"><p>کیف زنانه ۸</p></div>
-<div class="product" onclick="openProduct('20.jpg','کیف زنانه ۹')"><img src="20.jpg"><p>کیف زنانه ۹</p></div>
+<div class="product"><a href="#p12"><img src="12.webp"><p>کیف زنانه ۱</p></a></div>
+<div class="product"><a href="#p13"><img src="13.webp"><p>کیف زنانه ۲</p></a></div>
+<div class="product"><a href="#p14"><img src="14.jpg"><p>کیف زنانه ۳</p></a></div>
+<div class="product"><a href="#p15"><img src="15.jpg"><p>کیف زنانه ۴</p></a></div>
+<div class="product"><a href="#p16"><img src="16.jpg"><p>کیف زنانه ۵</p></a></div>
+<div class="product"><a href="#p17"><img src="17.webp"><p>کیف زنانه ۶</p></a></div>
+<div class="product"><a href="#p18"><img src="18.jpeg"><p>کیف زنانه ۷</p></a></div>
+<div class="product"><a href="#p19"><img src="19.jpeg"><p>کیف زنانه ۸</p></a></div>
+<div class="product"><a href="#p20"><img src="20.jpg"><p>کیف زنانه ۹</p></a></div>
 
 </div>
 </section>
 
-<!-- کوله مدارس -->
 <section class="category" id="school">
 <h2>کوله مدارس</h2>
 <div class="products">
 
-<div class="product" onclick="openProduct('21.jpg','کوله مدارس ۱')"><img src="21.jpg"><p>کوله مدارس ۱</p></div>
-<div class="product" onclick="openProduct('22.jpg','کوله مدارس ۲')"><img src="22.jpg"><p>کوله مدارس ۲</p></div>
-<div class="product" onclick="openProduct('23.jpg','کوله مدارس ۳')"><img src="23.jpg"><p>کوله مدارس ۳</p></div>
-<div class="product" onclick="openProduct('24.jpg','کوله مدارس ۴')"><img src="24.jpg"><p>کوله مدارس ۴</p></div>
-<div class="product" onclick="openProduct('25.jpg','کوله مدارس ۵')"><img src="25.jpg"><p>کوله مدارس ۵</p></div>
-<div class="product" onclick="openProduct('52.jpg','کوله مدارس ۶')"><img src="52.jpg"><p>کوله مدارس ۶</p></div>
-<div class="product" onclick="openProduct('53.jpg','کوله مدارس ۷')"><img src="53.jpg"><p>کوله مدارس ۷</p></div>
-<div class="product" onclick="openProduct('54.jpg','کوله مدارس ۸')"><img src="54.jpg"><p>کوله مدارس ۸</p></div>
-<div class="product" onclick="openProduct('55.jpg','کوله مدارس ۹')"><img src="55.jpg"><p>کوله مدارس ۹</p></div>
+<div class="product"><a href="#p21"><img src="21.jpg"><p>کوله مدارس ۱</p></a></div>
+<div class="product"><a href="#p22"><img src="22.jpg"><p>کوله مدارس ۲</p></a></div>
+<div class="product"><a href="#p23"><img src="23.jpg"><p>کوله مدارس ۳</p></a></div>
+<div class="product"><a href="#p24"><img src="24.jpg"><p>کوله مدارس ۴</p></a></div>
+<div class="product"><a href="#p25"><img src="25.jpg"><p>کوله مدارس ۵</p></a></div>
+<div class="product"><a href="#p52"><img src="52.jpg"><p>کوله مدارس ۶</p></a></div>
+<div class="product"><a href="#p53"><img src="53.jpg"><p>کوله مدارس ۷</p></a></div>
+<div class="product"><a href="#p54"><img src="54.jpg"><p>کوله مدارس ۸</p></a></div>
+<div class="product"><a href="#p55"><img src="55.jpg"><p>کوله مدارس ۹</p></a></div>
 
 </div>
 </section>
 
-<!-- چمدان -->
 <section class="category" id="suitcase">
 <h2>چمدان مسافرتی</h2>
 <div class="products">
 
-<div class="product" onclick="openProduct('26.jpeg','چمدان ۱')"><img src="26.jpeg"><p>چمدان ۱</p></div>
-<div class="product" onclick="openProduct('27.jpeg','چمدان ۲')"><img src="27.jpeg"><p>چمدان ۲</p></div>
-<div class="product" onclick="openProduct('28.jpg','چمدان ۳')"><img src="28.jpg"><p>چمدان ۳</p></div>
-<div class="product" onclick="openProduct('29.jpeg','چمدان ۴')"><img src="29.jpeg"><p>چمدان ۴</p></div>
+<div class="product"><a href="#p26"><img src="26.jpeg"><p>چمدان ۱</p></a></div>
+<div class="product"><a href="#p27"><img src="27.jpeg"><p>چمدان ۲</p></a></div>
+<div class="product"><a href="#p28"><img src="28.jpg"><p>چمدان ۳</p></a></div>
+<div class="product"><a href="#p29"><img src="29.jpeg"><p>چمدان ۴</p></a></div>
 
 </div>
 </section>
 
-<!-- کفش زنانه -->
 <section class="category" id="shoes">
 <h2>کفش زنانه</h2>
 <div class="products">
 
-<div class="product" onclick="openProduct('30.jpg','کفش زنانه ۱')"><img src="30.jpg"><p>کفش زنانه ۱</p></div>
-<div class="product" onclick="openProduct('31.jpg','کفش زنانه ۲')"><img src="31.jpg"><p>کفش زنانه ۲</p></div>
-<div class="product" onclick="openProduct('32.jpg','کفش زنانه ۳')"><img src="32.jpg"><p>کفش زنانه ۳</p></div>
-<div class="product" onclick="openProduct('33.jpg','کفش زنانه ۴')"><img src="33.jpg"><p>کفش زنانه ۴</p></div>
-<div class="product" onclick="openProduct('34.jpg','کفش زنانه ۵')"><img src="34.jpg"><p>کفش زنانه ۵</p></div>
-<div class="product" onclick="openProduct('35.jpg','کفش زنانه ۶')"><img src="35.jpg"><p>کفش زنانه ۶</p></div>
-<div class="product" onclick="openProduct('36.jpg','کفش زنانه ۷')"><img src="36.jpg"><p>کفش زنانه ۷</p></div>
-<div class="product" onclick="openProduct('37.jpg','کفش زنانه ۸')"><img src="37.jpg"><p>کفش زنانه ۸</p></div>
-<div class="product" onclick="openProduct('38.jpg','کفش زنانه ۹')"><img src="38.jpg"><p>کفش زنانه ۹</p></div>
-<div class="product" onclick="openProduct('39.jpg','کفش زنانه ۱۰')"><img src="39.jpg"><p>کفش زنانه ۱۰</p></div>
+<div class="product"><a href="#p30"><img src="30.jpg"><p>کفش زنانه ۱</p></a></div>
+<div class="product"><a href="#p31"><img src="31.jpg"><p>کفش زنانه ۲</p></a></div>
+<div class="product"><a href="#p32"><img src="32.jpg"><p>کفش زنانه ۳</p></a></div>
+<div class="product"><a href="#p33"><img src="33.jpg"><p>کفش زنانه ۴</p></a></div>
+<div class="product"><a href="#p34"><img src="34.jpg"><p>کفش زنانه ۵</p></a></div>
+<div class="product"><a href="#p35"><img src="35.jpg"><p>کفش زنانه ۶</p></a></div>
+<div class="product"><a href="#p36"><img src="36.jpg"><p>کفش زنانه ۷</p></a></div>
+<div class="product"><a href="#p37"><img src="37.jpg"><p>کفش زنانه ۸</p></a></div>
+<div class="product"><a href="#p38"><img src="38.jpg"><p>کفش زنانه ۹</p></a></div>
+<div class="product"><a href="#p39"><img src="39.jpg"><p>کفش زنانه ۱۰</p></a></div>
 
 </div>
 </section>
 
-<!-- کیف پاسپورتی -->
 <section class="category" id="passport">
 <h2>کیف پاسپورتی</h2>
 <div class="products">
 
-<div class="product" onclick="openProduct('40.jpg','کیف پاسپورتی ۱')"><img src="40.jpg"><p>کیف پاسپورتی ۱</p></div>
-<div class="product" onclick="openProduct('41.jpg','کیف پاسپورتی ۲')"><img src="41.jpg"><p>کیف پاسپورتی ۲</p></div>
-<div class="product" onclick="openProduct('42.jpg','کیف پاسپورتی ۳')"><img src="42.jpg"><p>کیف پاسپورتی ۳</p></div>
-<div class="product" onclick="openProduct('43.jpg','کیف پاسپورتی ۴')"><img src="43.jpg"><p>کیف پاسپورتی ۴</p></div>
-<div class="product" onclick="openProduct('44.jpeg','کیف پاسپورتی ۵')"><img src="44.jpeg"><p>کیف پاسپورتی ۵</p></div>
-<div class="product" onclick="openProduct('45.jpg','کیف پاسپورتی ۶')"><img src="45.jpg"><p>کیف پاسپورتی ۶</p></div>
-<div class="product" onclick="openProduct('46.jpeg','کیف پاسپورتی ۷')"><img src="46.jpeg"><p>کیف پاسپورتی ۷</p></div>
-<div class="product" onclick="openProduct('47.jpg','کیف پاسپورتی ۸')"><img src="47.jpg"><p>کیف پاسپورتی ۸</p></div>
-<div class="product" onclick="openProduct('48.jpg','کیف پاسپورتی ۹')"><img src="48.jpg"><p>کیف پاسپورتی ۹</p></div>
-<div class="product" onclick="openProduct('49.jpg','کیف پاسپورتی ۱۰')"><img src="49.jpg"><p>کیف پاسپورتی ۱۰</p></div>
-<div class="product" onclick="openProduct('50.jpg','کیف پاسپورتی ۱۱')"><img src="50.jpg"><p>کیف پاسپورتی ۱۱</p></div>
-<div class="product" onclick="openProduct('51.jpg','کیف پاسپورتی ۱۲')"><img src="51.jpg"><p>کیف پاسپورتی ۱۲</p></div>
+<div class="product"><a href="#p40"><img src="40.jpg"><p>کیف پاسپورتی ۱</p></a></div>
+<div class="product"><a href="#p41"><img src="41.jpg"><p>کیف پاسپورتی ۲</p></a></div>
+<div class="product"><a href="#p42"><img src="42.jpg"><p>کیف پاسپورتی ۳</p></a></div>
+<div class="product"><a href="#p43"><img src="43.jpg"><p>کیف پاسپورتی ۴</p></a></div>
+<div class="product"><a href="#p44"><img src="44.jpeg"><p>کیف پاسپورتی ۵</p></a></div>
+<div class="product"><a href="#p45"><img src="45.jpg"><p>کیف پاسپورتی ۶</p></a></div>
+<div class="product"><a href="#p46"><img src="46.jpeg"><p>کیف پاسپورتی ۷</p></a></div>
+<div class="product"><a href="#p47"><img src="47.jpg"><p>کیف پاسپورتی ۸</p></a></div>
+<div class="product"><a href="#p48"><img src="48.jpg"><p>کیف پاسپورتی ۹</p></a></div>
+<div class="product"><a href="#p49"><img src="49.jpg"><p>کیف پاسپورتی ۱۰</p></a></div>
+<div class="product"><a href="#p50"><img src="50.jpg"><p>کیف پاسپورتی ۱۱</p></a></div>
+<div class="product"><a href="#p51"><img src="51.jpg"><p>کیف پاسپورتی ۱۲</p></a></div>
 
 </div>
 </section>
 
 </main>
 
-<!-- اطلاعات تماس -->
 <section class="contact">
 
 <h2>ارتباط با فروشگاه عیاشی</h2>
 
-<div class="contact-item">
-📍 <strong>آدرس:</strong><br>
+<p>
+📍 <strong>آدرس فروشگاه:</strong><br>
 اهواز، نادری، خیابان سیروس، بین سعدی و کتانبافت
-</div>
+</p>
 
-<div class="contact-item">
+<p>
 📞 <strong>شماره تماس:</strong><br>
-<a href="tel:09385394740">09385394740</a>
-</div>
+<a class="phone" href="tel:09385394740">09385394740</a>
+</p>
 
-<div class="contact-item">
+<p>
 💬 <strong>واتساپ:</strong><br>
-<a class="whatsapp-link"
-href="https://wa.me/989385394740"
-target="_blank">
+<a class="whatsapp" href="https://wa.me/989385394740" target="_blank">
 09385394740
 </a>
-</div>
+</p>
 
-<div class="contact-item">
+<p>
 📷 <strong>اینستاگرام:</strong><br>
-<a class="instagram-link"
-href="https://instagram.com/kifokafsh.ayashi"
-target="_blank">
+<a class="instagram" href="https://instagram.com/kifokafsh.ayashi" target="_blank">
 @kifokafsh.ayashi
 </a>
-</div>
+</p>
 
 </section>
 
 <footer>
 <p>فروشگاه عیاشی</p>
 <p>کیف | کفش | ساک | چمدان</p>
-<p>اهواز - نادری - خیابان سیروس</p>
 </footer>
 
-<!-- پنجره نمایش عکس -->
-<div class="modal" id="imageModal" onclick="closeModal(event)">
-
-    <div class="modal-content">
-
-        <button class="close" onclick="closeModal()">×</button>
-
-        <img class="modal-image" id="modalImage" src="" alt="محصول فروشگاه عیاشی">
-
-        <div class="modal-title" id="modalTitle"></div>
-
-        <a
-            id="modalWhatsapp"
-            class="whatsapp-button"
-            href="#"
-            target="_blank">
-            💬 سفارش در واتساپ
-        </a>
-
-    </div>
-
-</div>
-
-<!-- واتساپ شناور -->
-<a
-    class="whatsapp-float"
-    href="https://wa.me/989385394740"
-    target="_blank"
-    aria-label="واتساپ فروشگاه">
-    💬
+<a class="whatsapp-float"
+href="https://wa.me/989385394740"
+target="_blank"
+aria-label="واتساپ فروشگاه">
+💬
 </a>
 
-<script>
 
-function openProduct(image, title) {
+<!-- عکس های بزرگ -->
 
-    const modal = document.getElementById("imageModal");
-    const modalImage = document.getElementById("modalImage");
-    const modalTitle = document.getElementById("modalTitle");
-    const whatsapp = document.getElementById("modalWhatsapp");
+<div id="p1" class="photo-page">
+<div class="photo-box">
+<img src="1.jpg">
+<div class="photo-title">ساک ورزشی ۱</div>
+<a class="whatsapp-product" href="https://wa.me/989385394740?text=سلام، درباره ساک ورزشی ۱ سوال دارم." target="_blank">💬 واتساپ برای سفارش</a>
+<a class="close" href="#">✕ بستن</a>
+</div>
+</div>
 
-    modalImage.src = image;
-    modalTitle.textContent = title;
+<div id="p2" class="photo-page"><div class="photo-box"><img src="2.jpg"><div class="photo-title">ساک ورزشی ۲</div><a class="whatsapp-product" href="https://wa.me/989385394740?text=سلام، درباره ساک ورزشی ۲ سوال دارم." target="_blank">💬 واتساپ برای سفارش</a><a class="close" href="#">✕ بستن</a></div></div>
 
-    const message =
-        "سلام، درباره " + title +
-        " از فروشگاه عیاشی سوال دارم.";
+<div id="p3" class="photo-page"><div class="photo-box"><img src="3.jpg"><div class="photo-title">ساک ورزشی ۳</div><a class="whatsapp-product" href="https://wa.me/989385394740?text=سلام، درباره ساک ورزشی ۳ سوال دارم." target="_blank">💬 واتساپ برای سفارش</a><a class="close" href="#">✕ بستن</a></div></div>
 
-    whatsapp.href =
-        "https://wa.me/989385394740?text=" +
-        encodeURIComponent(message);
+<div id="p4" class="photo-page"><div class="photo-box"><img src="4.jpg"><div class="photo-title">ساک ورزشی ۴</div><a class="whatsapp-product" href="https://wa.me/989385394740?text=سلام، درباره ساک ورزشی ۴ سوال دارم." target="_blank">💬 واتساپ برای سفارش</a><a class="close" href="#">✕ بستن</a></div></div>
 
-    modal.classList.add("show");
+<div id="p5" class="photo-page"><div class="photo-box"><img src="5.jpg"><div class="photo-title">ساک ورزشی ۵</div><a class="whatsapp-product" href="https://wa.me/989385394740?text=سلام، درباره ساک ورزشی ۵ سوال دارم." target="_blank">💬 واتساپ برای سفارش</a><a class="close" href="#">✕ بستن</a></div></div>
 
-    document.body.style.overflow = "hidden";
-}
+<div id="p6" class="photo-page"><div class="photo-box"><img src="6.jpg"><div class="photo-title">ساک ورزشی ۶</div><a class="whatsapp-product" href="https://wa.me/989385394740?text=سلام، درباره ساک ورزشی ۶ سوال دارم." target="_blank">💬 واتساپ برای سفارش</a><a class="close" href="#">✕ بستن</a></div></div>
 
-function closeModal(event) {
+<div id="p7" class="photo-page"><div class="photo-box"><img src="7.jpg"><div class="photo-title">ساک مسافرتی ۱</div><a class="whatsapp-product" href="https://wa.me/989385394740?text=سلام، درباره ساک مسافرتی ۱ سوال دارم." target="_blank">💬 واتساپ برای سفارش</a><a class="close" href="#">✕ بستن</a></div></div>
 
-    if (
-        !event ||
-        event.target.id === "imageModal" ||
-        event.target.classList.contains("close")
-    ) {
+<div id="p8" class="photo-page"><div class="photo-box"><img src="8.jpg"><div class="photo-title">ساک مسافرتی ۲</div><a class="whatsapp-product" href="https://wa.me/989385394740?text=سلام، درباره ساک مسافرتی ۲ سوال دارم." target="_blank">💬 واتساپ برای سفارش</a><a class="close" href="#">✕ بستن</a></div></div>
 
-        document.getElementById("imageModal").classList.remove("show");
+<div id="p9" class="photo-page"><div class="photo-box"><img src="9.jpg"><div class="photo-title">ساک مسافرتی ۳</div><a class="whatsapp-product" href="https://wa.me/989385394740?text=سلام، درباره ساک مسافرتی ۳ سوال دارم." target="_blank">💬 واتساپ برای سفارش</a><a class="close" href="#">✕ بستن</a></div></div>
 
-        document.body.style.overflow = "auto";
-    }
-}
+<div id="p10" class="photo-page"><div class="photo-box"><img src="10.jpg"><div class="photo-title">ساک مسافرتی ۴</div><a class="whatsapp-product" href="https://wa.me/989385394740?text=سلام، درباره ساک مسافرتی ۴ سوال دارم." target="_blank">💬 واتساپ برای سفارش</a><a class="close" href="#">✕ بستن</a></div></div>
 
-document.addEventListener("keydown", function(event) {
+<div id="p11" class="photo-page"><div class="photo-box"><img src="11.jpg"><div class="photo-title">ساک مسافرتی ۵</div><a class="whatsapp-product" href="https://wa.me/989385394740?text=سلام، درباره ساک مسافرتی ۵ سوال دارم." target="_blank">💬 واتساپ برای سفارش</a><a class="close" href="#">✕ بستن</a></div></div>
 
-    if (event.key === "Escape") {
+<div id="p12" class="photo-page"><div class="photo-box"><img src="12.webp"><div class="photo-title">کیف زنانه ۱</div><a class="whatsapp-product" href="https://wa.me/989385394740?text=سلام، درباره کیف زنانه ۱ سوال دارم." target="_blank">💬 واتساپ برای سفارش</a><a class="close" href="#">✕ بستن</a></div></div>
 
-        document.getElementById("imageModal").classList.remove("show");
+<div id="p13" class="photo-page"><div class="photo-box"><img src="13.webp"><div class="photo-title">کیف زنانه ۲</div><a class="whatsapp-product" href="https://wa.me/989385394740?text=سلام، درباره کیف زنانه ۲ سوال دارم." target="_blank">💬 واتساپ برای سفارش</a><a class="close" href="#">✕ بستن</a></div></div>
 
-        document.body.style.overflow = "auto";
-    }
+<div id="p14" class="photo-page"><div class="photo-box"><img src="14.jpg"><div class="photo-title">کیف زنانه ۳</div><a class="whatsapp-product" href="https://wa.me/989385394740?text=سلام، درباره کیف زنانه ۳ سوال دارم." target="_blank">💬 واتساپ برای سفارش</a><a class="close" href="#">✕ بستن</a></div></div>
 
-});
+<div id="p15" class="photo-page"><div class="photo-box"><img src="15.jpg"><div class="photo-title">کیف زنانه ۴</div><a class="whatsapp-product" href="https://wa.me/989385394740?text=سلام، درباره کیف زنانه ۴ سوال دارم." target="_blank">💬 واتساپ برای سفارش</a><a class="close" href="#">✕ بستن</a></div></div>
 
-</script>
+<div id="p16" class="photo-page"><div class="photo-box"><img src="16.jpg"><div class="photo-title">کیف زنانه ۵</div><a class="whatsapp-product" href="https://wa.me/989385394740?text=سلام، درباره کیف زنانه ۵ سوال دارم." target="_blank">💬 واتساپ برای سفارش</a><a class="close" href="#">✕ بستن</a></div></div>
+
+<div id="p17" class="photo-page"><div class="photo-box"><img src="17.webp"><div class="photo-title">کیف زنانه ۶</div><a class="whatsapp-product" href="https://wa.me/989385394740?text=سلام، درباره کیف زنانه ۶ سوال دارم." target="_blank">💬 واتساپ برای سفارش</a><a class="close" href="#">✕ بستن</a></div></div>
+
+<div id="p18" class="photo-page"><div class="photo-box"><img src="18.jpeg"><div class="photo-title">کیف زنانه ۷</div><a class="whatsapp-product" href="https://wa.me/989385394740?text=سلام، درباره کیف زنانه ۷ سوال دارم." target="_blank">💬 واتساپ برای سفارش</a><a class="close" href="#">✕ بستن</a></div></div>
+
+<div id="p19" class="photo-page"><div class="photo-box"><img src="19.jpeg"><div class="photo-title">کیف زنانه ۸</div><a class="whatsapp-product" href="https://wa.me/989385394740?text=سلام، درباره کیف زنانه ۸ سوال دارم." target="_blank">💬 واتساپ برای سفارش</a><a class="close" href="#">✕ بستن</a></div></div>
+
+<div id="p20" class="photo-page"><div class="photo-box"><img src="20.jpg"><div class="photo-title">کیف زنانه ۹</div><a class="whatsapp-product" href="https://wa.me/989385394740?text=سلام، درباره کیف زنانه ۹ سوال دارم." target="_blank">💬 واتساپ برای سفارش</a><a class="close" href="#">✕ بستن</a></div></div>
+
+<div id="p21" class="photo-page"><div class="photo-box"><img src="21.jpg"><div class="photo-title">کوله مدارس ۱</div><a class="whatsapp-product" href="https://wa.me/989385394740?text=سلام، درباره کوله مدارس ۱ سوال دارم." target="_blank">💬 واتساپ برای سفارش</a><a class="close" href="#">✕ بستن</a></div></div>
+
+<div id="p22" class="photo-page"><div class="photo-box"><img src="22.jpg"><div class="photo-title">کوله مدارس ۲</div><a class="whatsapp-product" href="https://wa.me/989385394740?text=سلام، درباره کوله مدارس ۲ سوال دارم." target="_blank">💬 واتساپ برای سفارش</a><a class="close" href="#">✕ بستن</a></div></div>
+
+<div id="p23" class="photo-page"><div class="photo-box"><img src="23.jpg"><div class="photo-title">کوله مدارس ۳</div><a class="whatsapp-product" href="https://wa.me/989385394740?text=سلام، درباره کوله مدارس ۳ سوال دارم." target="_blank">💬 واتساپ برای سفارش</a><a class="close" href="#">✕ بستن</a></div></div>
+
+<div id="p24" class="photo-page"><div class="photo-box"><img src="24.jpg"><div class="photo-title">کوله مدارس ۴</div><a class="whatsapp-product" href="https://wa.me/989385394740?text=سلام، درباره کوله مدارس ۴ سوال دارم." target="_blank">💬 واتساپ برای سفارش</a><a class="close" href="#">✕ بستن</a></div></div>
+
+<div id="p25" class="photo-page"><div class="photo-box"><img src="25.jpg"><div class="photo-title">کوله مدارس ۵</div><a class="whatsapp-product" href="https://wa.me/989385394740?text=سلام، درباره کوله مدارس ۵ سوال دارم." target="_blank">💬 واتساپ برای سفارش</a><a class="close" href="#">✕ بستن</a></div></div>
+
+<div id="p26" class="photo-page"><div class="photo-box"><img src="26.jpeg"><div class="photo-title">چمدان ۱</div><a class="whatsapp-product" href="https://wa.me/989385394740?text=سلام، درباره چمدان ۱ سوال دارم." target="_blank">💬 واتساپ برای سفارش</a><a class="close" href="#">✕ بستن</a></div></div>
+
+<div id="p27" class="photo-page"><div class="photo-box"><img src="27.jpeg"><div class="photo-title">چمدان ۲</div><a class="whatsapp-product" href="https://wa.me/989385394740?text=سلام، درباره چمدان ۲ سوال دارم." target="_blank">💬 واتساپ برای سفارش</a><a class="close" href="#">✕ بستن</a></div></div>
+
+<div id="p28" class="photo-page"><div class="photo-box"><img src="28.jpg"><div class="photo-title">چمدان ۳</div><a class="whatsapp-product" href="https://wa.me/989385394740?text=سلام، درباره چمدان ۳ سوال دارم." target="_blank">💬 واتساپ برای سفارش</a><a class="close" href="#">✕ بستن</a></div></div>
+
+<div id="p29" class="photo-page"><div class="photo-box"><img src="29.jpeg"><div class="photo-title">چمدان ۴</div><a class="whatsapp-product" href="https://wa.me/989385394740?text=سلام، درباره چمدان ۴ سوال دارم." target="_blank">💬 واتساپ برای سفارش</a><a class="close" href="#">✕ بستن</a></div></div>
+
+<div id="p30" class="photo-page"><div class="photo-box"><img src="30.jpg"><div class="photo-title">کفش زنانه ۱</div><a class="whatsapp-product" href="https://wa.me/989385394740?text=سلام، درباره کفش زنانه ۱ سوال دارم." target="_blank">💬 واتساپ برای سفارش</a><a class="close" href="#">✕ بستن</a></div></div>
+
+<div id="p31" class="photo-page"><div class="photo-box"><img src="31.jpg"><div class="photo-title">کفش زنانه ۲</div><a class="whatsapp-product" href="https://wa.me/989385394740?text=سلام، درباره کفش زنانه ۲ سوال دارم." target="_blank">💬 واتساپ برای سفارش</a><a class="close" href="#">✕ بستن</a></div></div>
+
+<div id="p32" class="photo-page"><div class="photo-box"><img src="32.jpg"><div class="photo-title">کفش زنانه ۳</div><a class="whatsapp-product" href="https://wa.me/989385394740?text=سلام، درباره کفش زنانه ۳ سوال دارم." target="_blank">💬 واتساپ برای سفارش</a><a class="close" href="#">✕ بستن</a></div></div>
+
+<div id="p33" class="photo-page"><div class="photo-box"><img src="33.jpg"><div class="photo-title">کفش زنانه ۴</div><a class="whatsapp-product" href="https://wa.me/989385394740?text=سلام، درباره کفش زنانه ۴ سوال دارم." target="_blank">💬 واتساپ برای سفارش</a><a class="close" href="#">✕ بستن</a></div></div>
+
+<div id="p34" class="photo-page"><div class="photo-box"><img src="34.jpg"><div class="photo-title">کفش زنانه ۵</div><a class="whatsapp-product" href="https://wa.me/989385394740?text=سلام، درباره کفش زنانه ۵ سوال دارم." target="_blank">💬 واتساپ برای سفارش</a><a class="close" href="#">✕ بستن</a></div></div>
+
+<div id="p35" class="photo-page"><div class="photo-box"><img src="35.jpg"><div class="photo-title">کفش زنانه ۶</div><a class="whatsapp-product" href="https://wa.me/989385394740?text=سلام، درباره کفش زنانه ۶ سوال دارم." target="_blank">💬 واتساپ برای سفارش</a><a class="close" href="#">✕ بستن</a></div></div>
+
+<div id="p36" class="photo-page"><div class="photo-box"><img src="36.jpg"><div class="photo-title">کفش زنانه ۷</div><a class="whatsapp-product" href="https://wa.me/989385394740?text=سلام، درباره کفش زنانه ۷ سوال دارم." target="_blank">💬 واتساپ برای سفارش</a><a class="close" href="#">✕ بستن</a></div></div>
+
+<div id="p37" class="photo-page"><div class="photo-box"><img src="37.jpg"><div class="photo-title">کفش زنانه ۸</div><a class="whatsapp-product" href="https://wa.me/989385394740?text=سلام، درباره کفش زنانه ۸ سوال دارم." target="_blank">💬 واتساپ برای سفارش</a><a class="close" href="#">✕ بستن</a></div></div>
+
+<div id="p38" class="photo-page"><div class="photo-box"><img src="38.jpg"><div class="photo-title">کفش زنانه ۹</div><a class="whatsapp-product" href="https://wa.me/989385394740?text=سلام، درباره کفش زنانه ۹ سوال دارم." target="_blank">💬 واتساپ برای سفارش</a><a class="close" href="#">✕ بستن</a></div></div>
+
+<div id="p39" class="photo-page"><div class="photo-box"><img src="39.jpg"><div class="photo-title">کفش زنانه ۱۰</div><a class="whatsapp-product" href="https://wa.me/989385394740?text=سلام، درباره کفش زنانه ۱۰ سوال دارم." target="_blank">💬 واتساپ برای سفارش</a><a class="close" href="#">✕ بستن</a></div></div>
+
+<div id="p40" class="photo-page"><div class="photo-box"><img src="40.jpg"><div class="photo-title">کیف پاسپورتی ۱</div><a class="whatsapp-product" href="https://wa.me/989385394740?text=سلام، درباره کیف پاسپورتی ۱ سوال دارم." target="_blank">💬 واتساپ برای سفارش</a><a class="close" href="#">✕ بستن</a></div></div>
+
+<div id="p41" class="photo-page"><div class="photo-box"><img src="41.jpg"><div class="photo-title">کیف پاسپورتی ۲</div><a class="whatsapp-product" href="https://wa.me/989385394740?text=سلام، درباره کیف پاسپورتی ۲ سوال دارم." target="_blank">💬 واتساپ برای سفارش</a><a class="close" href="#">✕ بستن</a></div></div>
+
+<div id="p42" class="photo-page"><div class="photo-box"><img src="42.jpg"><div class="photo-title">کیف پاسپورتی ۳</div><a class="whatsapp-product" href="https://wa.me/989385394740?text=سلام، درباره کیف پاسپورتی ۳ سوال دارم." target="_blank">💬 واتساپ برای سفارش</a><a class="close" href="#">✕ بستن</a></div></div>
+
+<div id="p43" class="photo-page"><div class="photo-box"><img src="43.jpg"><div class="photo-title">کیف پاسپورتی ۴</div><a class="whatsapp-product" href="https://wa.me/989385394740?text=سلام، درباره کیف پاسپورتی ۴ سوال دارم." target="_blank">💬 واتساپ برای سفارش</a><a class="close" href="#">✕ بستن</a></div></div>
+
+<div id="p44" class="photo-page"><div class="photo-box"><img src="44.jpeg"><div class="photo-title">کیف پاسپورتی ۵</div><a class="whatsapp-product" href="https://wa.me/989385394740?text=سلام، درباره کیف پاسپورتی ۵ سوال دارم." target="_blank">💬 واتساپ برای سفارش</a><a class="close" href="#">✕ بستن</a></div></div>
+
+<div id="p45" class="photo-page"><div class="photo-box"><img src="45.jpg"><div class="photo-title">کیف پاسپورتی ۶</div><a class="whatsapp-product" href="https://wa.me/989385394740?text=سلام، درباره کیف پاسپورتی ۶ سوال دارم." target="_blank">💬 واتساپ برای سفارش</a><a class="close" href="#">✕ بستن</a></div></div>
+
+<div id="p46" class="photo-page"><div class="photo-box"><img src="46.jpeg"><div class="photo-title">کیف پاسپورتی ۷</div><a class="whatsapp-product" href="https://wa.me/989385394740?text=سلام، درباره کیف پاسپورتی ۷ سوال دارم." target="_blank">💬 واتساپ برای سفارش</a><a class="close" href="#">✕ بستن</a></div></div>
+
+<div id="p47" class="photo-page"><div class="photo-box"><img src="47.jpg"><div class="photo-title">کیف پاسپورتی ۸</div><a class="whatsapp-product" href="https://wa.me/989385394740?text=سلام، درباره کیف پاسپورتی ۸ سوال دارم." target="_blank">💬 واتساپ برای سفارش</a><a class="close" href="#">✕ بستن</a></div></div>
+
+<div id="p48" class="photo-page"><div class="photo-box"><img src="48.jpg"><div class="photo-title">کیف پاسپورتی ۹</div><a class="whatsapp-product" href="https://wa.me/989385394740?text=سلام، درباره کیف پاسپورتی ۹ سوال دارم." target="_blank">💬 واتساپ برای سفارش</a><a class="close" href="#">✕ بستن</a></div></div>
+
+<div id="p49" class="photo-page"><div class="photo-box"><img src="49.jpg"><div class="photo-title">کیف پاسپورتی ۱۰</div><a class="whatsapp-product" href="https://wa.me/989385394740?text=سلام، درباره کیف پاسپورتی ۱۰ سوال دارم." target="_blank">💬 واتساپ برای سفارش</a><a class="close" href="#">✕ بستن</a></div></div>
+
+<div id="p50" class="photo-page"><div class="photo-box"><img src="50.jpg"><div class="photo-title">کیف پاسپورتی ۱۱</div><a class="whatsapp-product" href="https://wa.me/989385394740?text=سلام، درباره کیف پاسپورتی ۱۱ سوال دارم." target="_blank">💬 واتساپ برای سفارش</a><a class="close" href="#">✕ بستن</a></div></div>
+
+<div id="p51" class="photo-page"><div class="photo-box"><img src="51.jpg"><div class="photo-title">کیف پاسپورتی ۱۲</div><a class="whatsapp-product" href="https://wa.me/989385394740?text=سلام، درباره کیف پاسپورتی ۱۲ سوال دارم." target="_blank">💬 واتساپ برای سفارش</a><a class="close" href="#">✕ بستن</a></div></div>
+
+<div id="p52" class="photo-page"><div class="photo-box"><img src="52.jpg"><div class="photo-title">کوله مدارس ۶</div><a class="whatsapp-product" href="https://wa.me/989385394740?text=سلام، درباره کوله مدارس ۶ سوال دارم." target="_blank">💬 واتساپ برای سفارش</a><a class="close" href="#">✕ بستن</a></div></div>
+
+<div id="p53" class="photo-page"><div class="photo-box"><img src="53.jpg"><div class="photo-title">کوله مدارس ۷</div><a class="whatsapp-product" href="https://wa.me/989385394740?text=سلام، درباره کوله مدارس ۷ سوال دارم." target="_blank">💬 واتساپ برای سفارش</a><a class="close" href="#">✕ بستن</a></div></div>
+
+<div id="p54" class="photo-page"><div class="photo-box"><img src="54.jpg"><div class="photo-title">کوله مدارس ۸</div><a class="whatsapp-product" href="https://wa.me/989385394740?text=سلام، درباره کوله مدارس ۸ سوال دارم." target="_blank">💬 واتساپ برای سفارش</a><a class="close" href="#">✕ بستن</a></div></div>
+
+<div id="p55" class="photo-page"><div class="photo-box"><img src="55.jpg"><div class="photo-title">کوله مدارس ۹</div><a class="whatsapp-product" href="https://wa.me/989385394740?text=سلام، درباره کوله مدارس ۹ سوال دارم." target="_blank">💬 واتساپ برای سفارش</a><a class="close" href="#">✕ بستن</a></div></div>
 
 </body>
 </html>
-
-
