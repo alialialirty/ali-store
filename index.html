@@ -8,266 +8,395 @@
 
 <style>
 *{
-box-sizing:border-box;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
 }
 
 body{
-margin:0;
-font-family:Tahoma,Arial,sans-serif;
-background:#f4f4f4;
-color:#222;
+  margin:0;
+  font-family:Tahoma,Arial,sans-serif;
+  background:
+    radial-gradient(circle at top right, rgba(194,158,104,.10), transparent 35%),
+    linear-gradient(135deg,#fffdf8,#f7f0e4);
+  color:#2b2926;
 }
 
+/* هدر اصلی */
 header{
-background:#111;
-color:white;
-text-align:center;
-padding:28px 15px;
+  background:
+    linear-gradient(135deg,#211d19,#4a3b2c);
+  color:#fff;
+  text-align:center;
+  padding:42px 15px 36px;
+  box-shadow:0 5px 20px rgba(0,0,0,.18);
 }
 
 header h1{
-margin:0;
-font-size:30px;
+  margin:0;
+  font-size:34px;
+  letter-spacing:.5px;
 }
 
 header p{
-margin:10px 0 0;
-font-size:16px;
+  margin:12px 0 0;
+  font-size:17px;
+  color:#eadfce;
 }
 
+/* منوی دسته بندی */
 nav{
-background:white;
-padding:12px;
-display:flex;
-justify-content:center;
-flex-wrap:wrap;
-gap:8px;
-position:sticky;
-top:0;
-z-index:50;
-box-shadow:0 2px 8px #0002;
+  background:rgba(255,253,248,.96);
+  padding:14px 10px;
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:9px;
+  position:sticky;
+  top:0;
+  z-index:50;
+  box-shadow:0 3px 15px rgba(70,50,30,.12);
+  backdrop-filter:blur(8px);
 }
 
 nav a{
-background:#eeeeee;
-color:#111;
-text-decoration:none;
-padding:9px 13px;
-border-radius:20px;
-font-weight:bold;
-font-size:14px;
+  background:#fff;
+  color:#493a2c;
+  text-decoration:none;
+  padding:10px 15px;
+  border-radius:25px;
+  font-weight:bold;
+  font-size:14px;
+  border:1px solid #e5d8c7;
+  transition:.25s;
 }
 
+nav a:hover{
+  background:#493a2c;
+  color:#fff;
+  transform:translateY(-2px);
+}
+
+/* محتوای اصلی */
 .container{
-width:94%;
-max-width:1200px;
-margin:25px auto;
+  width:94%;
+  max-width:1200px;
+  margin:32px auto;
 }
 
+/* دسته بندی */
 .category{
-margin-bottom:40px;
-scroll-margin-top:80px;
+  margin-bottom:48px;
+  scroll-margin-top:90px;
 }
 
 .category h2{
-background:#111;
-color:white;
-padding:13px;
-border-radius:10px;
-font-size:21px;
+  position:relative;
+  background:linear-gradient(135deg,#3b3026,#66513c);
+  color:#fff;
+  padding:15px 20px;
+  border-radius:14px;
+  font-size:21px;
+  margin-bottom:20px;
+  box-shadow:0 5px 15px rgba(70,50,30,.16);
 }
 
+.category h2::after{
+  content:"";
+  position:absolute;
+  right:20px;
+  bottom:-5px;
+  width:55px;
+  height:3px;
+  background:#d5b27c;
+  border-radius:10px;
+}
+
+/* محصولات */
 .products{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-gap:16px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:20px;
 }
 
 .product{
-background:white;
-border-radius:12px;
-overflow:hidden;
-box-shadow:0 3px 12px #0002;
-text-align:center;
+  background:#fff;
+  border-radius:16px;
+  overflow:hidden;
+  box-shadow:0 5px 18px rgba(60,45,30,.12);
+  text-align:center;
+  border:1px solid #eee3d5;
+  transition:.3s;
+}
+
+.product:hover{
+  transform:translateY(-6px);
+  box-shadow:0 12px 28px rgba(60,45,30,.20);
 }
 
 .product a{
-display:block;
-text-decoration:none;
-color:#222;
+  display:block;
+  text-decoration:none;
+  color:#302b26;
 }
 
 .product img{
-width:100%;
-height:230px;
-object-fit:cover;
-display:block;
-background:#eee;
+  width:100%;
+  height:235px;
+  object-fit:cover;
+  display:block;
+  background:#f3eee7;
+  transition:.35s;
+}
+
+.product:hover img{
+  transform:scale(1.035);
 }
 
 .product p{
-margin:0;
-padding:11px 5px;
-font-weight:bold;
+  margin:0;
+  padding:13px 5px 15px;
+  font-weight:bold;
+  font-size:15px;
 }
 
-/* صفحه بزرگ عکس */
+/* صفحه نمایش عکس بزرگ */
 .photo-page{
-display:none;
-position:fixed;
-z-index:999;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,.94);
-align-items:center;
-justify-content:center;
-padding:20px;
+  display:none;
+  position:fixed;
+  z-index:999;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(25,20,16,.96);
+  align-items:center;
+  justify-content:center;
+  padding:20px;
 }
 
 .photo-page:target{
-display:flex;
+  display:flex;
 }
 
 .photo-box{
-max-width:900px;
-width:100%;
-text-align:center;
+  max-width:900px;
+  width:100%;
+  text-align:center;
 }
 
 .photo-box img{
-max-width:100%;
-max-height:72vh;
-object-fit:contain;
-background:white;
-border-radius:12px;
+  max-width:100%;
+  max-height:72vh;
+  object-fit:contain;
+  background:#fff;
+  border-radius:16px;
+  box-shadow:0 10px 40px rgba(0,0,0,.45);
 }
 
 .photo-title{
-color:white;
-font-size:18px;
-font-weight:bold;
-margin:12px 0;
+  color:#fff;
+  font-size:18px;
+  font-weight:bold;
+  margin:14px 0;
+}
+
+/* دکمه ها */
+.close,
+.whatsapp-product{
+  display:inline-block;
+  text-decoration:none;
+  padding:11px 20px;
+  border-radius:25px;
+  font-weight:bold;
+  margin:5px;
+  transition:.25s;
 }
 
 .close{
-display:inline-block;
-background:white;
-color:#111;
-text-decoration:none;
-padding:10px 20px;
-border-radius:25px;
-font-weight:bold;
-margin:5px;
+  background:#fff;
+  color:#333;
+}
+
+.close:hover{
+  background:#eee;
+  transform:translateY(-2px);
 }
 
 .whatsapp-product{
-display:inline-block;
-background:#25D366;
-color:white;
-text-decoration:none;
-padding:12px 20px;
-border-radius:25px;
-font-weight:bold;
-margin:5px;
+  background:#25D366;
+  color:#fff;
+}
+
+.whatsapp-product:hover{
+  transform:translateY(-2px);
+  box-shadow:0 5px 15px rgba(37,211,102,.35);
 }
 
 /* اطلاعات تماس */
 .contact{
-background:white;
-width:94%;
-max-width:1000px;
-margin:30px auto;
-padding:25px;
-border-radius:15px;
-box-shadow:0 3px 12px #0002;
-text-align:center;
+  background:rgba(255,255,255,.92);
+  width:94%;
+  max-width:1000px;
+  margin:35px auto;
+  padding:30px 22px;
+  border-radius:18px;
+  box-shadow:0 6px 22px rgba(60,45,30,.12);
+  border:1px solid #eadfce;
+  text-align:center;
 }
 
 .contact h2{
-margin-top:0;
+  margin-top:0;
+  color:#44372b;
 }
 
 .contact p{
-font-size:16px;
-line-height:2;
-margin:10px 0;
+  font-size:16px;
+  line-height:2;
+  margin:13px 0;
 }
 
 .contact a{
-font-weight:bold;
-text-decoration:none;
+  font-weight:bold;
+  text-decoration:none;
 }
 
 .phone{
-color:#111;
+  color:#302b26;
 }
 
 .whatsapp{
-color:#159447;
+  color:#159447;
 }
 
 .instagram{
-color:#c13584;
+  color:#c13584;
 }
 
 /* واتساپ شناور */
 .whatsapp-float{
-position:fixed;
-left:18px;
-bottom:18px;
-width:60px;
-height:60px;
-border-radius:50%;
-background:#25D366;
-color:white;
-display:flex;
-align-items:center;
-justify-content:center;
-text-decoration:none;
-font-size:28px;
-z-index:200;
-box-shadow:0 4px 15px #0005;
+  position:fixed;
+  left:18px;
+  bottom:18px;
+  width:62px;
+  height:62px;
+  border-radius:50%;
+  background:#25D366;
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-decoration:none;
+  font-size:29px;
+  z-index:200;
+  box-shadow:0 5px 18px rgba(0,0,0,.25);
+  transition:.25s;
 }
 
+.whatsapp-float:hover{
+  transform:scale(1.08);
+}
+
+/* پایین سایت */
 footer{
-background:#111;
-color:white;
-text-align:center;
-padding:25px;
-margin-top:40px;
+  background:linear-gradient(135deg,#211d19,#44372b);
+  color:#fff;
+  text-align:center;
+  padding:30px 15px;
+  margin-top:50px;
 }
 
+footer p{
+  margin:7px 0;
+}
+
+/* موبایل */
 @media(max-width:600px){
 
-.products{
-grid-template-columns:repeat(2,1fr);
-gap:10px;
+  header{
+    padding:34px 12px 30px;
+  }
+
+  header h1{
+    font-size:27px;
+  }
+
+  header p{
+    font-size:15px;
+  }
+
+  nav{
+    gap:6px;
+    padding:10px 7px;
+  }
+
+  nav a{
+    font-size:12px;
+    padding:8px 10px;
+  }
+
+  .container{
+    width:94%;
+    margin:25px auto;
+  }
+
+  .category{
+    margin-bottom:38px;
+  }
+
+  .category h2{
+    font-size:18px;
+    padding:13px 15px;
+  }
+
+  .products{
+    grid-template-columns:repeat(2,1fr);
+    gap:11px;
+  }
+
+  .product{
+    border-radius:12px;
+  }
+
+  .product img{
+    height:185px;
+  }
+
+  .product p{
+    font-size:13px;
+    padding:10px 3px 12px;
+  }
+
+  .photo-page{
+    padding:10px;
+  }
+
+  .photo-box img{
+    max-height:65vh;
+    border-radius:12px;
+  }
+
+  .photo-title{
+    font-size:16px;
+  }
+
+  .contact{
+    padding:25px 15px;
+  }
+
+  .whatsapp-float{
+    width:56px;
+    height:56px;
+    left:14px;
+    bottom:14px;
+  }
 }
 
-.product img{
-height:180px;
-}
 
-nav a{
-font-size:12px;
-padding:8px 10px;
-}
 
-header h1{
-font-size:25px;
-}
-
-.photo-page{
-padding:10px;
-}
-
-.photo-box img{
-max-height:65vh;
-}
-
-}
 </style>
 </head>
 
